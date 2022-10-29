@@ -150,7 +150,7 @@ public class ResultSS {
 
         bodyStyle = wb.createCellStyle();
         bodyStyle.setWrapText(true);
-        bodyStyle.setAlignment(HorizontalAlignment.CENTER);
+        bodyStyle.setAlignment(HorizontalAlignment.LEFT);
         bodyStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         bodyStyle.setFont(normalFont);
 
