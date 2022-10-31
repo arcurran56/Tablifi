@@ -3,5 +3,11 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.base/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.jre/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tablifi.jre/src/main/resources" charset="UTF-8" />
   </component>
 </project>
