@@ -10,11 +10,10 @@ import java.util.List;
 public class ExtractAnnotationsHelper {
     private static final Logger logger = LogManager.getLogger();
 
-    public static void extract(String folderPath) {
-        File imagesFolder = new File(folderPath);
+    public static String extract(File imagesFolder) {
 
         String outputFileName = "Image List.xlsx";
-        File outputFile = new File(folderPath, outputFileName);
+        File outputFile = new File(imagesFolder, outputFileName);
 
         File[] imagesArray = imagesFolder.listFiles(f -> f.getName().endsWith(".JPG"));
 
@@ -25,15 +24,15 @@ public class ExtractAnnotationsHelper {
         ssHeaderRow.add("Time Taken");
         ssHeaderRow.add("Description");
 
-
+        String completionState = "Done.";
         for (File imageFile : imagesArray) {
-
 
             ImageAnnotations imageAnnotations = null;
             try {
                 imageAnnotations = new ImageAnnotations(imageFile);
             } catch (ImageReadException | IOException e) {
                 logger.warn("Failed to read image file: " + imageFile);
+
             }
 
             List<SSRow> ssRows = resultSS.getSsRows();
@@ -52,7 +51,8 @@ public class ExtractAnnotationsHelper {
             resultSS.createSpreadsheet(outputStream);
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            completionState = "Write Failure";
         }
+        return completionState;
     }
 }

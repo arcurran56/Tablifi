@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tablifi.app" />
+        <module name="tablifi.gui" />
         <module name="tablifi.jre" />
         <module name="tablifi.base" />
       </profile>

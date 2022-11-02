@@ -7,7 +7,7 @@ public class Tablifi {
     }
     public static void main(String[] args){
         String imagesFolderName = args[0];
-        ExtractAnnotationsHelper extractAnnotationsHelper = new ExtractAnnotationsHelper();
-        extractAnnotationsHelper.extract(imagesFolderName);
+        File imagesFolder= new File(imagesFolderName);
+        ExtractAnnotationsHelper.extract(imagesFolder);
     }
 }
