@@ -27,6 +27,8 @@ public class ExtractAnnotationsHelper {
         String completionState = "Done.";
         for (File imageFile : imagesArray) {
 
+            logger.debug("Image file: " + imageFile.getName());
+
             ImageAnnotations imageAnnotations = null;
             try {
                 imageAnnotations = new ImageAnnotations(imageFile);

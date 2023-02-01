@@ -109,14 +109,17 @@ public class ImageAnnotations {
     private Date extractDate(String dateTimeString) {
         dateFormat.applyPattern("yyyy:MM:dd HH:mm:ss");
         StringBuilder builder = new StringBuilder(90);
+
+        Date date = null;
+
+        try{
+            if (dateTimeString.length()<10) throw new ParseException(dateTimeString,dateTimeString.length());
         builder.append(dateTimeString.substring(8, 10))
                 .append("/")
                 .append(dateTimeString.substring(5, 7))
                 .append("/")
                 .append(dateTimeString.substring(0, 4));
 
-        Date date = null;
-        try {
             date = dateFormat.parse(dateTimeString);
         } catch (ParseException e) {
             logger.warn("Failed to parse date: " + dateTimeString);
