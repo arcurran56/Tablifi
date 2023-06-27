@@ -34,6 +34,7 @@ public class ExtractAnnotationsHelper {
                 imageAnnotations = new ImageAnnotations(imageFile);
             } catch (ImageReadException | IOException e) {
                 logger.warn("Failed to read image file: " + imageFile);
+                completionState = "Errors.";
 
             }
 
