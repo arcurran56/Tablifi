@@ -10,7 +10,16 @@ import java.util.List;
 public class ExtractAnnotationsHelper {
     private static final Logger logger = LogManager.getLogger();
 
+    private static class EmptySelectionException extends Exception {
+    }
+
+
     public static String extract(File imagesFolder) {
+        String completionState;
+        String lastImageFileName = "";
+
+        try {
+        if( imagesFolder == null ) throw new EmptySelectionException();
 
         String outputFileName = "Image List.xlsx";
         File outputFile = new File(imagesFolder, outputFileName);
@@ -24,19 +33,15 @@ public class ExtractAnnotationsHelper {
         ssHeaderRow.add("Time Taken");
         ssHeaderRow.add("Description");
 
-        String completionState = "Done.";
-        for (File imageFile : imagesArray) {
+        completionState = "Done.";
 
+        for (File imageFile : imagesArray) {
+            lastImageFileName = imageFile.getName();
             logger.debug("Image file: " + imageFile.getName());
 
             ImageAnnotations imageAnnotations = null;
-            try {
-                imageAnnotations = new ImageAnnotations(imageFile);
-            } catch (ImageReadException | IOException e) {
-                logger.warn("Failed to read image file: " + imageFile);
-                completionState = "Errors.";
 
-            }
+            imageAnnotations = new ImageAnnotations(imageFile);
 
             List<SSRow> ssRows = resultSS.getSsRows();
             SSRow ssRow = new SSRow();
@@ -48,13 +53,17 @@ public class ExtractAnnotationsHelper {
             ssRows.add(ssRow);
         }
         OutputStream outputStream = null;
-        try {
+
             outputStream = new FileOutputStream(outputFile);
 
             resultSS.createSpreadsheet(outputStream);
 
-        } catch (IOException e) {
-            completionState = "Write Failure";
+        } catch (ImageReadException | IOException e) {
+            logger.warn("Failed to read image file: " + lastImageFileName);
+            completionState = "IO Failure";
+
+        } catch (EmptySelectionException e) {
+            completionState = "No folder selected.";
         }
         return completionState;
     }
