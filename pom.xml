@@ -55,7 +55,7 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
                 <scope>compile</scope>
-                <version>5.2.2</version>
+                <version>5.2.5</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.logging.log4j</groupId>
@@ -95,7 +95,19 @@
                 <artifactId>tablifi.gui</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
-        </dependencies>
+            <dependency>
+                <groupId>tablifi</groupId>
+                <artifactId>tablifi.jre</artifactId>
+                <classifier>jre</classifier>
+                <version>1.0-SNAPSHOT</version>
+                <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>tablifi</groupId>
+                <artifactId>tablifi.gui</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <classifier>jar-with-dependencies</classifier>
+            </dependency>        </dependencies>
     </dependencyManagement>
     <build>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

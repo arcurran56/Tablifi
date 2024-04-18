@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tablifi.gui</artifactId>
+    <version>${project.parent.version}</version>
 
      <dependencies>
         <dependency>
@@ -51,7 +52,7 @@
                 </executions>
                 <configuration>
                     <goal>unpack</goal>
-                    <artifact>com.intellij:forms_rt:2022.1.3:jar</artifact>
+                    <artifact>com.intellij:forms_rt:7.0.3:jar</artifact>
                     <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                 </configuration>
             </plugin>
